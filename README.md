@@ -12,3 +12,18 @@
 
 ### Chapter.3 파이토치 튜토리얼
 1. Pytorch는 Autograd 제공 → 자동으로 back-propagation 계산
+2. Pytorch는 broadcasting 연산 적용 → 크기가 다른 두 텐서 연산 가능
+3. Pytorch 기초 함수/메서드
+    * torch.Float/Long/ByteTensor(array or shape)
+    * torch.from_numpy(nd.array), tensor.numpy()
+    * tensor.long/float() → 타입 변환
+    * tensor.size() or tensor.shape, tensor.dim()
+    * tensor.sum/mean(dim)
+    * tensor.view/reshape(shape)
+    * tensor.squeeze(idx) → 차원의 크기가 1인 차원을 없애주는 역할
+    * tensor에 대한 indexing 및 slicing 가능
+    * tensor.split/chunk(size/chunks, dim)
+        - chunk는 마지막까지 같은 크기로 가고, 마지막에 남는걸로 최후 처리
+    * tensor.index_select(dim, index)
+    * torch.concat/cat(tensor_list, dim)
+    * torch.stack(tensor_list, dim)
