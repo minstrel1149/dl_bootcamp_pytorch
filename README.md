@@ -42,6 +42,7 @@
     * torch.bmm(input, input) → 여러 샘플(행렬)을 동시에 병렬 계산(batch matmul)
         - 마지막 두개 차원을 제외한 다른 차원의 크기는 동일해야
     * import torch.nn as nn → nn.Module을 바탕으로 클래스 상속
+        - __init__() 함수 및 forward() 함수 이용
         - nn.Parameter 클래스 활용
         - nn.Linear 클래스 활용
     * torch.cuda.FloatTensor(size), torch.device(device), tensor.to(device_obj)
@@ -71,3 +72,11 @@
     * 로지스틱 회귀는 Linear Layer 직후 Activation Function을 넣어주어 모델 구성
     * Sigmoid의 경우 출력값의 범위는 0에서 1 사이로 고정 → 참/거짓 판단
 2. Loss function은 MSE가 아니라, 주로 BCE(binary cross-entropy) 활용
+
+### Chapter.9 심층신경망
+1. Layer들을 깊게 쌓아올린 것 → Linear Layer를 쌓을 때 그 사이에 non-Linear function을 끼워넣는 것
+    * back-propagation을 통해 효율적으로 DNN 학습, chain rule을 통해 구현
+        - 미분 계산 과정이 계속해서 뒤 쪽 Layer들로 전달되는 형태
+2. Regression 문제일 때는 MSE Loss function 사용
+3. Gradient vanishing → DNN의 Layer가 깊어질 수록 자꾸 1보다 작은 값이 곱해져 생기는 문제
+    * ReLU 혹은 Leaky ReLU를 통해 해결(ReLU는 Dead neuron 문제 발생)
