@@ -27,3 +27,21 @@
     * tensor.index_select(dim, index)
     * torch.concat/cat(tensor_list, dim)
     * torch.stack(tensor_list, dim)
+    * tensor.expand(size) → 차원의 크기가 1인 차원을 원하는 크기로 늘려주는 역할
+    * torch.randperm(n) → 딥러닝은 랜덤성에 의존하는 부분이 많기 때문에 활용
+    * tensor.argmax(dim)
+    * torch.topk(input, k, dim)
+    * torch.sort(input, dim, descending)
+    * tensor.masked_fill(mask, value) → pandas의 series.where 메서드와 유사
+    * torch.ones/zeros(size), torch.ones_like/zeros_like(input)
+
+### Chapter.4 선형 계층
+1. Linear Layer의 parameter Θ는 y = W^T*x + b 형태
+1. Linear Layer 관련 Pytorch 기초 함수/메서드
+    * torch.matmul(input, input)
+    * torch.bmm(input, input) → 여러 샘플(행렬)을 동시에 병렬 계산(batch matmul)
+        - 마지막 두개 차원을 제외한 다른 차원의 크기는 동일해야
+    * import torch.nn as nn → nn.Module을 바탕으로 클래스 상속
+        - nn.Parameter 클래스 활용
+        - nn.Linear 클래스 활용
+    
