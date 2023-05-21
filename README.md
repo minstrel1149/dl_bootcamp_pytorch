@@ -36,12 +36,25 @@
     * torch.ones/zeros(size), torch.ones_like/zeros_like(input)
 
 ### Chapter.4 선형 계층
-1. Linear Layer의 parameter Θ는 y = W^T*x + b 형태
-1. Linear Layer 관련 Pytorch 기초 함수/메서드
+1. Linear Layer는 y = W^T*x + b 형태이므로 parameter Θ는 W, b
+2. Linear Layer 관련 Pytorch 기초 함수/메서드
     * torch.matmul(input, input)
     * torch.bmm(input, input) → 여러 샘플(행렬)을 동시에 병렬 계산(batch matmul)
         - 마지막 두개 차원을 제외한 다른 차원의 크기는 동일해야
     * import torch.nn as nn → nn.Module을 바탕으로 클래스 상속
         - nn.Parameter 클래스 활용
         - nn.Linear 클래스 활용
-    
+    * torch.cuda.FloatTensor(size), torch.device(device), tensor.to(device_obj)
+
+### Chapter.5 손실 함수
+1. loss → y_hat과 y 사이 간 차이의 크기를 더한 것
+    * L1 norm, L2 norm, RMSE/MSE 등 존재
+2. Loss Function 관련 Pytorch 기초 함수/메서드
+    * import torch.nn.functional as F
+    * F.mse_loss(y_hat, y, reduction) or nn.MSELoss()
+
+### Chapter.6 경사하강법
+1. Loss function이 최소가 되는 parameter Θ를 찾기 위한 방법의 일종 → Θ_hat = argmin L(Θ)
+2. Θ ← Θ - η▽L(Θ) (단, η : Learning rate)
+    * Local minimum에 빠질 우려가 있으나, 높은 차원의 공간에서는 크게 문제 되지 않음
+    * η는 Hyperparameter, Adam 등의 기법 활용 가능
