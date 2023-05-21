@@ -58,3 +58,10 @@
 2. Θ ← Θ - η▽L(Θ) (단, η : Learning rate)
     * Local minimum에 빠질 우려가 있으나, 높은 차원의 공간에서는 크게 문제 되지 않음
     * η는 Hyperparameter, Adam 등의 기법 활용 가능
+2. Gradient Descent 관련 Pytorch 기초 함수/메서드
+    * torch.rand_like(input)
+    * requires_grad 속성이 True가 되도록 설정해줘야
+    * loss.backward() → Calculate gradients, 텐서의 크기는 scalar여야
+
+### Chapter.7 선형 회귀
+1. 
