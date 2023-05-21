@@ -62,6 +62,12 @@
     * torch.rand_like(input)
     * requires_grad 속성이 True가 되도록 설정해줘야
     * loss.backward() → Calculate gradients, 텐서의 크기는 scalar여야
+3. Pytorch optim 클래스를 통해 optimizer 수행 가능
+    * optimizer.zero_grad() → optimizer.step()
+    * optim.SGD(model.parameters(), lr), optim.Adam(model.parameters()) 등
 
-### Chapter.7 선형 회귀
-1. 
+### Chapter.8 로지스틱 회귀
+1. Activation function → Sigmoid, TanH 등
+    * 로지스틱 회귀는 Linear Layer 직후 Activation Function을 넣어주어 모델 구성
+    * Sigmoid의 경우 출력값의 범위는 0에서 1 사이로 고정 → 참/거짓 판단
+2. Loss function은 MSE가 아니라, 주로 BCE(binary cross-entropy) 활용
