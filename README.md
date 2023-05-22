@@ -80,3 +80,13 @@
 2. Regression 문제일 때는 MSE Loss function 사용
 3. Gradient vanishing → DNN의 Layer가 깊어질 수록 자꾸 1보다 작은 값이 곱해져 생기는 문제
     * ReLU 혹은 Leaky ReLU를 통해 해결(ReLU는 Dead neuron 문제 발생)
+
+### Chapter.10 확률적 경사하강법
+1. SGD는 전체 데이터셋을 모델에 통과시키는 대신 랜덤 샘플링한 k개의 샘플을 모델에 통과
+    * 샘플링 과정에서 비복원 추출을 수행, 랜덤 샘플링된 k개의 샘플 묶음은 mini-batch
+    * 하나의 mini-batch가 통과하는 것을 iteration, 전체 샘플이 모두 통과하는 것을 epoch
+    * mini-batch의 크기는 Hyperparameter
+2. 이중 for-loop 진행
+    * 바깥쪽 for-loop는 최대 epochs 수만큼 반복
+    * 안쪽 for-loop는 mini-batch에 대하여 feed-forwarding, backpropagation, 경사하강 등 수행
+    * 매 epoch 시마다 데이터 셋을 셔플링하고 mini-batch로 나눠줘야
