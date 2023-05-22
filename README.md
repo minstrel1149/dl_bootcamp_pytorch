@@ -90,3 +90,12 @@
     * 바깥쪽 for-loop는 최대 epochs 수만큼 반복
     * 안쪽 for-loop는 mini-batch에 대하여 feed-forwarding, backpropagation, 경사하강 등 수행
     * 매 epoch 시마다 데이터 셋을 셔플링하고 mini-batch로 나눠줘야
+
+### Chapter.11 최적화
+1. Hyperparameter → 자동으로 최적화되지 않으므로 직접 실험을 통해 성능을 지켜보면서 값을 튜닝해야
+    * empiricial, heuristic 방법을 통해 찾는 형태
+    * 중요한 Hyperparameter와 사소한 Hyperparameter를 구분할 수 있는 능력이 필요
+2. Learning rate: 대표적인 Hyperparameter, 가장 먼저 튜닝이 필요하기도
+    * Θ ← Θ - η▽L(Θ) : Learning rate에 따라 학습이 진행되는 양상이 달라질 수도
+    * Learning rate를 학습 내내 고정하는 것이 아니라 동적으로 가져간다면 이점 → Adaptive Learning rate로 발전
+    * 요즘 가장 많이 쓰이는 알고리즘은 Adam(Adagrad + Momentum)
