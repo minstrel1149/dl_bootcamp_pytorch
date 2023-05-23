@@ -99,3 +99,15 @@
     * Θ ← Θ - η▽L(Θ) : Learning rate에 따라 학습이 진행되는 양상이 달라질 수도
     * Learning rate를 학습 내내 고정하는 것이 아니라 동적으로 가져간다면 이점 → Adaptive Learning rate로 발전
     * 요즘 가장 많이 쓰이는 알고리즘은 Adam(Adagrad + Momentum)
+
+### Chapter.12 오버피팅을 방지하는 방법
+1. 최종 목표는 generalization error를 최소화하는 것이지, training error를 최소화하는 것이 아님
+    * Overfitting: training error가 generalization error에 비해 현격하게 낮아지는 현상
+    * Underfitting: 모델이 충분히 데이터를 학습하지 못하여 train error가 충분히 낮지 않은 현상
+    * Overfitting 여부를 확인한 이후 Overfitting을 방지하는 방향으로 모델을 개선
+2. 학습 초반 Underfitting으로 시작해서 어느 순간 Overfitting으로 전환
+    * Overfitting으로 전환되는 순간에 학습을 멈춘다면 가장 이상적 → Validation dataset 활용
+    * 학습하는 도중에 주기적으로 모델에 넣어 loss를 구함으로써 Overfitting 여부를 확인
+    * Validation dataset을 통해서는 학습을 진행하지 않으며, dataset은 랜덤하게 나눠져야
+    * 학습 종료 후 가장 낮은 Validation loss를 갖는 모델을 복원
+3. 결론적으로는 Train dataset, Validation dataset, Test dataset으로 나눠지는 형태
