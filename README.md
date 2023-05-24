@@ -73,7 +73,7 @@
     * Sigmoid의 경우 출력값의 범위는 0에서 1 사이로 고정 → 참/거짓 판단
 2. Loss function은 MSE가 아니라, 주로 BCE(binary cross-entropy) 활용
 
-### Chapter.9 심층신경망
+### Chapter.9 심층신경망 I
 1. Layer들을 깊게 쌓아올린 것 → Linear Layer를 쌓을 때 그 사이에 non-Linear function을 끼워넣는 것
     * back-propagation을 통해 효율적으로 DNN 학습, chain rule을 통해 구현
         - 미분 계산 과정이 계속해서 뒤 쪽 Layer들로 전달되는 형태
@@ -111,3 +111,7 @@
     * Validation dataset을 통해서는 학습을 진행하지 않으며, dataset은 랜덤하게 나눠져야
     * 학습 종료 후 가장 낮은 Validation loss를 갖는 모델을 복원
 3. 결론적으로는 Train dataset, Validation dataset, Test dataset으로 나눠지는 형태
+
+### Chapter.13 심층신경망 II
+1. 이진 분류를 위한 DNN은 회귀를 위한 DNN 마지막에 Sigmoid 함수를 씌워주는 형태
+2. 이진 분류의 평가 지표: Accuracy, Precision-Recall, F1 Score, ROC Curve 등
