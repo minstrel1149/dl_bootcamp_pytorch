@@ -115,3 +115,9 @@
 ### Chapter.13 심층신경망 II
 1. 이진 분류를 위한 DNN은 회귀를 위한 DNN 마지막에 Sigmoid 함수를 씌워주는 형태
 2. 이진 분류의 평가 지표: Accuracy, Precision-Recall, F1 Score, ROC Curve 등
+3. 다중 분류를 위한 DNN은 각 후보 클래스에 대한 조건부 확률 값을 요소로
+    * 정답 벡터는 One-hot vector
+    * Softmax 함수를 활용 → 한 모델이 하나의 분류 문제만 풀 수 있는 형태
+    * loss function은 Cross entropy 함수 활용
+    * 단, Log-softmax 함수에 NLL(negative log-likelihood) 손실 함수를 사용하는 것이 일반적
+4. 다중 분류의 평가 지표: Confusion Matrix 등
