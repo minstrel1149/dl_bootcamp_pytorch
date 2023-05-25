@@ -121,3 +121,19 @@
     * loss function은 Cross entropy 함수 활용
     * 단, Log-softmax 함수에 NLL(negative log-likelihood) 손실 함수를 사용하는 것이 일반적
 4. 다중 분류의 평가 지표: Confusion Matrix 등
+
+### Chapter.14 정규화(Regularization)
+1. Regularization: Overfitting을 늦추고 일반화 오차를 낮춰주는 기법 → 노이즈에 더 Robust한 모델
+    * 데이터를 통한 정규화: Data Augmentation
+        - 데이터의 핵심 특징은 간직한 채 노이즈를 더하여 데이터셋 확장
+    * Loss function을 통한 정규화: Weight Decay
+        - L2 Norm, L1 Norm 등 활용 → Ridge, Lasso와 관련?
+        - torch.optim(weight_decay)에서 활용 가능
+        - Parameter Θ{W, b}에서 b는 Weight Decay에서 제외
+    * 신경망 계층을 통한 정규화: Dropout, Batch Normalization
+    * 학습/추론 방식을 통한 정규화: Early Stopping, Bagging & Ensemble
+2. Dropout: 신경망 중간에 노이즈를 추가 → 임의의 노드를 일정 확률로 드랍
+    * 노드의 드랍 확률 p가 Hyperparameter
+    * Dropout은 train에서만 적용 → inference에서는 모든 노드가 항상 참여
+    * Activation Function 다음에 nn.Dropout(p) 추가
+    * train과 inference가 다르게 동작해야 하므로, model.train() / model.eval() 활용
