@@ -121,6 +121,9 @@
     * loss function은 Cross entropy 함수 활용
     * 단, Log-softmax 함수에 NLL(negative log-likelihood) 손실 함수를 사용하는 것이 일반적
 4. 다중 분류의 평가 지표: Confusion Matrix 등
+5. 모델 성능의 개선은 ERR(Error Reduction Rate)를 통해 상대적 개선 폭을 측정
+    * {(1 - Accuracy2) - (1 - Accuracy1)} / (1 - Accuracy1)
+    * 제대로 비교하고자 한다면 최소 5번 이상 같은 실험을 반복하여 평균 테스트 정확도 측정 필요
 
 ### Chapter.14 정규화(Regularization)
 1. Regularization: Overfitting을 늦추고 일반화 오차를 낮춰주는 기법 → 노이즈에 더 Robust한 모델
@@ -136,4 +139,8 @@
     * 노드의 드랍 확률 p가 Hyperparameter
     * Dropout은 train에서만 적용 → inference에서는 모든 노드가 항상 참여
     * Activation Function 다음에 nn.Dropout(p) 추가
+    * train과 inference가 다르게 동작해야 하므로, model.train() / model.eval() 활용
+3. Batch Normalization: 학습 속도 향상 및 일반화 성능 개선 가능한 기법
+    * NN의 Layer는 연쇄적으로 동작하기에 covariate 문제 발생 → Mini-batch 분포를 정규화하여 해결
+    * Activation Function 다음에 nn.BatchNorm1d(layers) 추가
     * train과 inference가 다르게 동작해야 하므로, model.train() / model.eval() 활용
