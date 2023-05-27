@@ -187,10 +187,23 @@
     * y_hat_t = h_t = f(x_t, h_t;Θ), where Θ = {W_ih, b_ih, W_hh, b_hh}
     * = tanh(W_ih * x_t + b_ih + W_hh * h_t-1 + b_hh)
     * h_t는 hidden state
-2. RNN의 입출력 tensor 형태(Auto-regressive, 일방향 RNN의 경우)
+2. RNN의 입출력 tensor 형태(Auto-regressive, 단방향 RNN의 경우)
     * 일반: X = (batch_size, n, input_size), h_1:n = (batch_size, n, hidden_size)
         - 출력 상태와 은닉 상태(hidden state)가 동일, (n = 순서 정보)
     * Multi-layerd: X = (batch_size, n, input_size), h_1:n = (batch_size, n, hidden_size)
         - 출력 상태와 은닉 상태가 상이 → |h_t| = (#layers, batch_size, hidden_size)
         - hidden state는 입력들을 받아오며 자신의 상태를 업데이트 한 기억, Weight Parameter가 아님
     * Bi-directional multi-layered RNN의 경우 출력 텐서 모양이 (batch_size, n, hidden_size * #directions)
+3. Auto-regressive에 따라 RNN 활용 방법이 달라지기도
+    * many to one: non Auto-regressive, 텍스트 분류 등
+    * many to many: non Auto-regressive, 형태소 분석 등
+    * ont to many: Auto-regressive, 자연어 생성, 기계 번역 등
+    * Seq to Seq의 경우 many to one(encoder)와 one to many(decoder)의 결합
+4. LSTM(Long short term memory)
+    * RNN은 tanh가 존재하여 Gradient Vanishing 문제 발생 → LSTM 활용 가능
+    * forget 게이트, output 게이트, input 게이트 존재
+    * h_t 이외에도 cell state 개념 추가
+5. LSTM의 입출력 tensor 형태
+    * input = (batch_size, n, input_size), output = (batch_size, n, hidden_size * #directions)
+    * hidden_state = (#directions * #layers, batch_size, hidden_size)
+    * cell_state = hidden_state
