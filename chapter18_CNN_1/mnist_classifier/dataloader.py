@@ -1,4 +1,6 @@
 import torch
+from mnist_classifier.models.fc import ImageClassifier
+from mnist_classifier.models.cnn import ConvolutionalClassifier
 
 def load_mnist(is_train=True, download=False, flatten=True):
     from torchvision import datasets, transforms
@@ -33,3 +35,18 @@ def get_hidden_sizes(input_size, output_size, n_layers):
         current_size = hidden_sizes[-1]
     
     return hidden_sizes
+
+def get_model(input_size, output_size, config):
+    if config.model == 'fc':
+        model = ImageClassifier(
+            input_size=input_size, output_size=output_size,
+            hidden_sizes=get_hidden_sizes(input_size, output_size, config.n_layers),
+            use_batch_norm=not config.use_dropout,
+            dropout_p=config.dropout_p
+        )
+    elif config.model == 'cnn':
+        model = ConvolutionalClassifier(output_size)
+    else:
+        raise NotImplementedError
+    
+    return model

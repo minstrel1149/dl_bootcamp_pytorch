@@ -181,3 +181,16 @@
 2. Max-pooling 및 Stride 기법을 이용하여 Dimensionality Reduction 수행 가능
     * Max-pooling: 각 영역에서 가장 큰 숫자를 출력하여 차원을 축소
     * Stride: kernel이 칸을 건너뛰어 동작하도록 수행
+
+### Chapter.19 RNN(순환신경망)
+1. Recurrent NN는 NLP같은 순서 정보가 담긴 데이터나 Time-series 데이터를 다루는데 적합
+    * y_hat_t = h_t = f(x_t, h_t;Θ), where Θ = {W_ih, b_ih, W_hh, b_hh}
+    * = tanh(W_ih * x_t + b_ih + W_hh * h_t-1 + b_hh)
+    * h_t는 hidden state
+2. RNN의 입출력 tensor 형태(Auto-regressive, 일방향 RNN의 경우)
+    * 일반: X = (batch_size, n, input_size), h_1:n = (batch_size, n, hidden_size)
+        - 출력 상태와 은닉 상태(hidden state)가 동일, (n = 순서 정보)
+    * Multi-layerd: X = (batch_size, n, input_size), h_1:n = (batch_size, n, hidden_size)
+        - 출력 상태와 은닉 상태가 상이 → |h_t| = (#layers, batch_size, hidden_size)
+        - hidden state는 입력들을 받아오며 자신의 상태를 업데이트 한 기억, Weight Parameter가 아님
+    * Bi-directional multi-layered RNN의 경우 출력 텐서 모양이 (batch_size, n, hidden_size * #directions)
