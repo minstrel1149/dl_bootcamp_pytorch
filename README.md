@@ -170,3 +170,14 @@
     * Gradient ascent를 활용하여 MLE 수행
 2. NN의 Weight Parameter가 분포를 나타내며, NN의 출력이 Parameter 변화에 따른 확률 분포
     * NLL(Negative Log-likelihood)을 통해 최소화 문제로 바꾸고 Gradient descent를 통해 MLE 구현
+
+### Chapter.18 CNN(합성곱신경망)
+1. Convolutional NN을 활용하여 최적의 패턴 추출 방법을 학습
+    * X = N, c_in, X_height, X_width
+    * y = N, c_out, (X_height - k_height + 1), (X_width - k_width + 1)
+        - Matrix를 Vector로 만들어 줄 필요 없이 그대로 활용 가능
+    * CNN Block을 지날 때마다 텐서의 크기 Height, Weight는 줄이고, Channel의 개수는 증가하도록 설계
+    * Height, Weight가 각 1이 될때 Linear Layer를 적용
+2. Max-pooling 및 Stride 기법을 이용하여 Dimensionality Reduction 수행 가능
+    * Max-pooling: 각 영역에서 가장 큰 숫자를 출력하여 차원을 축소
+    * Stride: kernel이 칸을 건너뛰어 동작하도록 수행
