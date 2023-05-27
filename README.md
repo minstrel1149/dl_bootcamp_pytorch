@@ -160,3 +160,13 @@
     * Linear Dimensionality Reduction: PCA 등
     * Non-linear Dimensionality Reduction: AutoEncoder 등
         - x → z → x_hat, 중간 vector z를 x에 대한 hidden representation
+
+### Chapter.17 확률론적 관점
+1. MLE(Maximum Likelihood Estimation)
+    * 주어진 샘플들이 만들어진 분포 위해 높은 확률(분포 아래 점선 길이)을 지녀야
+    * 점선 길이의 곱을 Likelihood → Likelihood를 최대로 하는 분포의 Parameter를 찾는 것
+    * Likelihood는 확률의 곱 → 샘플의 숫자가 많아지면 크기가 작아지는 문제
+        - Log를 도입하여 확률의 곱셈을 덧셈으로 변환 → Log Likelihood
+    * Gradient ascent를 활용하여 MLE 수행
+2. NN의 Weight Parameter가 분포를 나타내며, NN의 출력이 Parameter 변화에 따른 확률 분포
+    * NLL(Negative Log-likelihood)을 통해 최소화 문제로 바꾸고 Gradient descent를 통해 MLE 구현
