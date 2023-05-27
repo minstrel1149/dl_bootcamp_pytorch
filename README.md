@@ -144,3 +144,7 @@
     * NN의 Layer는 연쇄적으로 동작하기에 covariate 문제 발생 → Mini-batch 분포를 정규화하여 해결
     * Activation Function 다음에 nn.BatchNorm1d(layers) 추가
     * train과 inference가 다르게 동작해야 하므로, model.train() / model.eval() 활용
+
+### Chapter.15 실무 환경에서의 프로젝트 연습
+1. 프로젝트 규모가 커지고 파일이 많아지면 디렉터리 구조를 추가하여 효율적으로 관리해야
+    * 최소한의 수정으로 최대한 재활용과 확장이 가능하도록 설계 및 구현
