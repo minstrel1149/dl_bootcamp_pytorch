@@ -7,9 +7,9 @@ import torch.optim as optim
 from model import ImageClassifier
 from trainer import Trainer
 
-from utils import load_mnist
-from utils import split_data
-from utils import get_hidden_sizes
+from dataloader import load_mnist
+from dataloader import split_data
+from dataloader import get_hidden_sizes
 
 def define_argparser():
     p = argparse.ArgumentParser()
@@ -21,6 +21,7 @@ def define_argparser():
 
     p.add_argument('--batch_size', type=int, default=256)
     p.add_argument('--n_epochs', type=int, default=20)
+    p.add_argument('--early_stop', type=int, default=0)
 
     p.add_argument('--n_layers', type=int, default=5)
     p.add_argument('--use_dropout', action='store_true')

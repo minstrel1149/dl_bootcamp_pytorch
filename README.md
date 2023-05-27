@@ -148,3 +148,15 @@
 ### Chapter.15 실무 환경에서의 프로젝트 연습
 1. 프로젝트 규모가 커지고 파일이 많아지면 디렉터리 구조를 추가하여 효율적으로 관리해야
     * 최소한의 수정으로 최대한 재활용과 확장이 가능하도록 설계 및 구현
+
+### Chapter.16 표현 학습
+1. Feature 추출 방법: 머신러닝 vs 딥러닝
+    * 머신러닝: 가정을 세우고 Feature를 추출하는 방법 설정 → 동작 및 결과 해석이 용이
+    * 딥러닝: NN 모델이 직접 Feature 파악 및 추출 → 사람이 발견할 수 없는 Feature 활용 가능
+2. One-Hot Encoding
+    * pd.get_dummies(data, columns, sparse) 활용 가능
+    * Word embedding을 통해 One-Hot vector로 표현된 단어를 Dense vector로 표현 가능
+3. Dimensionality Reduction
+    * Linear Dimensionality Reduction: PCA 등
+    * Non-linear Dimensionality Reduction: AutoEncoder 등
+        - x → z → x_hat, 중간 vector z를 x에 대한 hidden representation

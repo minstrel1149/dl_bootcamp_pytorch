@@ -66,6 +66,7 @@ class Trainer():
     def train(self, train_data, valid_data, config):
         lowest_loss = np.inf
         best_model = None
+        lowest_epoch = np.inf
 
         for i in range(config.n_epochs):
             train_loss = self._train(train_data[0], train_data[1], config)
@@ -73,7 +74,12 @@ class Trainer():
 
             if valid_loss < lowest_loss:
                 lowest_loss = valid_loss
+                lowest_epoch = i
                 best_model = deepcopy(self.model.state_dict())
+            else:
+                if config.early_stop > 0 and config.early_stop + lowest_epoch < i + 1:
+                    print(f'There is no improvement during last {config.early_stop} epochs.')
+                    break
             
             print(print(f'Epoch {i + 1}/{config.n_epochs}: train_loss={train_loss:.6f}  valid_loss={valid_loss:.6f}  lowest_loss={lowest_loss:.6f}'))
 
