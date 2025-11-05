@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from model import ImageClassifier
+from model_fc import ImageClassifier
 from trainer import Trainer
 from dataloader import load_mnist, split_data
 
