@@ -25,7 +25,7 @@ class Block(nn.Module):
         y = self.block(X)
         return y
     
-class ImageClasifier(nn.Module):
+class ImageClassifier(nn.Module):
     def __init__(self, input_size, output_size, n_layers, use_batch_norm=True, dropout_p=0.3):
         super().__init__()
 
