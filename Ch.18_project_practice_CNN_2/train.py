@@ -4,9 +4,9 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from model_fc import ImageClassifier
-from trainer import Trainer
-from dataloader import load_mnist, split_data
+from mnist_classifier.models.model_fc import ImageClassifier
+from mnist_classifier.trainer import Trainer
+from mnist_classifier.dataloader import load_mnist, split_data
 
 def define_argparser():
     p = argparse.ArgumentParser()
