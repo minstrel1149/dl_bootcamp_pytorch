@@ -6,7 +6,7 @@ import torch.optim as optim
 
 from mnist_classifier.models.model_fc import ImageClassifier
 from mnist_classifier.trainer import Trainer
-from mnist_classifier.dataloader import load_mnist, split_data
+from mnist_classifier.dataloader import load_mnist, split_data, get_model
 
 def define_argparser():
     p = argparse.ArgumentParser()
@@ -24,6 +24,9 @@ def define_argparser():
     p.add_argument('--n_layers', type=int, default=7)
     p.add_argument('--use_dropout', action='store_true')
     p.add_argument('--dropout_p', type=float, default=0.2)
+
+    p.add_argument('--image_size', type=int, default=28)
+    p.add_argument('--base_channels', type=int, default=32)
 
     p.add_argument('--clf', type=bool, default=True)
 
@@ -45,10 +48,7 @@ def main(config):
     input_size = int(X_train.shape[-1])
     output_size = int(max(y_train)) + 1
 
-    model = ImageClassifier(input_size=input_size, output_size=output_size,
-                           n_layers=config.n_layers,
-                           use_batch_norm=not config.use_dropout,
-                           dropout_p=config.dropout_p)
+    model = get_model(input_size, output_size, config)
     model = model.to(device)
     optimizer = optim.Adam(model.parameters())
     crit = nn.NLLLoss() if config.clf is True else nn.MSELoss()
